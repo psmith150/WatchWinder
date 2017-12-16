@@ -11,6 +11,14 @@ enum state {Init, Winding, Paused, QuickCharge, Disabled}; //Enumberation for st
 #define PWMA 5
 #define PWMB 6
 #define STBY 9
+#define Motor1TPD 0
+#define Motor2TPD 1
+#define Motor1Direction 2
+#define Motor2Direction 3
+
+// Put pins in arrays to work within loop structure
+int tpdPins[] = {Motor1TPD, Motor2TPD};
+int directionPins[] = {Motor1Direction, Motor2Direction};
 
 // these constants are used to allow you to make your motor configuration 
 // line up with function names like forward.  Value can be 1 or -1
@@ -44,28 +52,35 @@ int rotationDirection[numMotors]; //Used to switch between CW (-1) and CCW (+1) 
 
 void setup() 
 {
+  Serial.begin(9600);
+  //delay(2000);
+  //Serial.print("Setting up ");
+  //Serial.print(numMotors);
+  //Serial.println(" motors");
   for (int i=0; i<numMotors; i++)
   {
     //Initialize variables to default values
     turnsPerDay[i] = 750;
     motorDirections[i] = Both;
     motorSpeed[i] = maxSpeed;
-    onTime[numMotors] = 600000L; //10 minutes on
-    offTime[numMotors] = 5400000L; //90 minutes off
+    onTime[i] = 600000L; //10 minutes on
+    offTime[i] = 5400000L; //90 minutes off
     startMillis[i] = 0L;
     rotationDirection[i] = 1;
     winderState[i] = Init; //Set each winder to the initialization state
     transitioning[i] = false;
+    Serial.print("Setup complete for motor ");
+    Serial.println(i);
   }
-  Serial.begin(9600);
 }
 
 void loop() 
 {
+  //unsigned long cycleStart = millis();
   int motorPWM = 0;
   float cyclesPerDay = 0.0;
   float calcTemp = 0.0; //Temporary float for intermediate calculations
-  for (int i=0; i<numMotors;i++)
+  for(int i=0; i<numMotors; i++)
   {
     switch (winderState[i])
     {
@@ -75,13 +90,14 @@ void loop()
         calcTemp = turnsPerDay[i] / (cyclesPerDay * motorSpeed[i]); //Required on time in min
         onTime[i] = calcTemp * 60 * 1000; //Convert to ms and round
         offTime[i] = cycleTime * 60 * 1000 - onTime[i]; //Off time to fill out the cycle
-        Serial.print("Motor ");
-        Serial.print(i);
-        Serial.print(" on/off time: ");
-        Serial.print(onTime[i]);
-        Serial.print(" / ");
-        Serial.println(offTime[i]);
-        delay(5000);
+//        delay(5000);
+//        Serial.print("Motor ");
+//        Serial.print(i);
+//        Serial.print(" on/off time: ");
+//        Serial.print(onTime[i]);
+//        Serial.print(" / ");
+//        Serial.println(offTime[i]);
+//        delay(5000);
         winderState[i] = Winding;
         transitioning[i] = true;
         Serial.print("Motor ");
@@ -123,6 +139,13 @@ void loop()
           Serial.print(i);
           Serial.println(" finished winding.");
         }
+//        Serial.print("Motor ");
+//        Serial.print(i);
+//        Serial.print(" time passed: ");
+//        Serial.print((millis()-startMillis[i])/1000);
+//        Serial.print(" / ");
+//        Serial.println(onTime[i]/1000);
+//        delay(1000);
         break;
       case Paused: //Idles for the remainder of the cycle
         if (transitioning[i])
@@ -182,15 +205,51 @@ void loop()
         }
         break;
       default:
+        //winderState[i] = Init;
         break;
     }
-    delay(100); //No need for fast cycle times
   }
+  delay(100);
+  //Serial.print("Cycle time: ");
+  //Serial.println(millis() - cycleStart);
 }
 
 //This function testes if the specified timer has expired
-bool timerExpired(unsigned long startTime, int duration)
+bool timerExpired(unsigned long startTime, unsigned long duration)
 {
   return (millis() - startTime > duration);
+}
+
+rotation readDirection(int pin)
+{
+  int val = analogRead(pin);
+  if (val >=0 && val < 256)
+  {
+    return CCW;
+  }
+  else if (val >= 256 && val < 512)
+  {
+    return CW;
+  }
+  else if (val >= 512 && val < 768)
+  {
+    return Both;
+  }
+  else if (val >= 768 && val < 1024)
+  {
+    return Off;
+  }
+  else
+  {
+    Serial.print("Invalid reading on analog pin ");
+    Serial.println(pin);
+    return CCW;
+  }
+}
+
+int readTPD(int pin)
+{
+  int val = analogRead(pin);
+  return map(val, 0, 1023, 200, 2000);
 }
 
