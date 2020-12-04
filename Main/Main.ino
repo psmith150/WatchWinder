@@ -82,11 +82,17 @@ void loop()
   float calcTemp = 0.0; //Temporary float for intermediate calculations
   for(int i=0; i<numMotors; i++)
   {
+    motorDirections[i] = readDirection(directionPins[i]);
+    if (motorDirections[i] == Off)
+    {
+      winderState[i] = Disabled;
+    }
     switch (winderState[i])
     {
       case Init: //Used to initialize on/off times
         //Initialize drive data here
         cyclesPerDay = 24.0 * 60.0 / cycleTime;
+        turnsPerDay[i] = readTPD(tpdPins[i]);
         calcTemp = turnsPerDay[i] / (cyclesPerDay * motorSpeed[i]); //Required on time in min
         onTime[i] = calcTemp * 60 * 1000; //Convert to ms and round
         offTime[i] = cycleTime * 60 * 1000 - onTime[i]; //Off time to fill out the cycle

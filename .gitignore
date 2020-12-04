@@ -216,5 +216,7 @@ pip-log.txt
 .mr.developer.cfg
 
 #############
-## Arduino
+## CAD
 #############
+*.pro
+*.crc
