@@ -46,6 +46,7 @@ int motorSpeed[numMotors]; //Motor speed for each watch, in RPM
 unsigned long onTime[numMotors]; //Time to run (ms)
 unsigned long offTime[numMotors]; //Time to pause (ms)
 state winderState[numMotors]; //Tracks the state of each watch
+state nextState[numMotors]; //Used to transition to a new state
 bool transitioning[numMotors]; //One-shot used to track state transitions
 unsigned long startMillis[numMotors]; //Used to keep track of the watch run/pause timers
 int rotationDirection[numMotors]; //Used to switch between CW (-1) and CCW (+1) rotation
@@ -68,6 +69,7 @@ void setup()
     startMillis[i] = 0L;
     rotationDirection[i] = 1;
     winderState[i] = Init; //Set each winder to the initialization state
+    nextState[i] = Init;
     transitioning[i] = false;
     Serial.print("Setup complete for motor ");
     Serial.println(i);
@@ -85,7 +87,7 @@ void loop()
     motorDirections[i] = readDirection(directionPins[i]);
     if (motorDirections[i] == Off)
     {
-      winderState[i] = Disabled;
+      nextState[i] = Disabled;
     }
     switch (winderState[i])
     {
@@ -104,7 +106,7 @@ void loop()
 //        Serial.print(" / ");
 //        Serial.println(offTime[i]);
 //        delay(5000);
-        winderState[i] = Winding;
+        nextState[i] = Winding;
         transitioning[i] = true;
         Serial.print("Motor ");
         Serial.print(i);
@@ -139,7 +141,7 @@ void loop()
         }
         if (timerExpired(startMillis[i], onTime[i]))
         {
-          winderState[i] = Paused;
+          nextState[i] = Paused;
           transitioning[i] = true;
           Serial.print("Motor ");
           Serial.print(i);
@@ -165,7 +167,7 @@ void loop()
         }
         if (timerExpired(startMillis[i], offTime[i]))
         {
-          winderState[i] = Winding;
+          nextState[i] = Winding;
           transitioning[i] = true;
           Serial.print("Motor ");
           Serial.print(i);
@@ -185,7 +187,7 @@ void loop()
         }
         if (timerExpired(startMillis[i], quickChargeDuration))
         {
-          winderState[i] = Paused;
+          nextState[i] = Paused;
           transitioning[i] = true;
           Serial.print("Motor ");
           Serial.print(i);
@@ -203,7 +205,7 @@ void loop()
         }
         if (motorDirections[i] != Off)
         {
-          winderState[i] = Init;
+          nextState[i] = Init;
           transitioning[i] = true;
           Serial.print("Motor ");
           Serial.print(i);
@@ -214,6 +216,7 @@ void loop()
         //winderState[i] = Init;
         break;
     }
+    winderState[i] = nextState[i];
   }
   delay(100);
   //Serial.print("Cycle time: ");
@@ -258,4 +261,3 @@ int readTPD(int pin)
   int val = analogRead(pin);
   return map(val, 0, 1023, 200, 2000);
 }
-
