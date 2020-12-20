@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name Sparkfun-Dual-Motor-Driver)(type Legacy)(uri ${KIPRJMOD}/library/Sparkfun-Dual-Motor-Driver.lib)(options "")(descr ""))
+)

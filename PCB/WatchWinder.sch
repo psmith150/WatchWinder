@@ -1,0 +1,383 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Watch Winder"
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L SparkFun-Boards:SPARKFUN_PRO_MICRO B1
+U 1 1 5FDD7A33
+P 6200 2800
+F 0 "B1" H 6200 3710 45  0000 C CNN
+F 1 "SPARKFUN_PRO_MICRO" H 6200 3626 45  0000 C CNN
+F 2 "Boards:SPARKFUN_PRO_MICRO" H 6200 3600 20  0001 C CNN
+F 3 "" H 6200 2800 50  0001 C CNN
+F 4 "XXX-00000" H 6200 3531 60  0000 C CNN "Field4"
+	1    6200 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sparkfun-Dual-Motor-Driver:DRIVER J4
+U 1 1 5FDE2F5F
+P 4500 2300
+F 0 "J4" H 4500 2425 50  0000 C CNN
+F 1 "DRIVER" H 4500 2334 50  0000 C CNN
+F 2 "driver:DRIVER" H 4500 2300 50  0001 C CNN
+F 3 "" H 4500 2300 50  0001 C CNN
+	1    4500 2300
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5750 2250
+NoConn ~ 5750 2350
+NoConn ~ 5750 2450
+NoConn ~ 5750 2550
+NoConn ~ 6650 2450
+$Comp
+L power:+12V #PWR0104
+U 1 1 5FDF4595
+P 6750 2150
+F 0 "#PWR0104" H 6750 2000 50  0001 C CNN
+F 1 "+12V" H 6765 2323 50  0000 C CNN
+F 2 "" H 6750 2150 50  0001 C CNN
+F 3 "" H 6750 2150 50  0001 C CNN
+	1    6750 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5FDF6FE9
+P 7000 2050
+F 0 "#PWR0106" H 7000 1800 50  0001 C CNN
+F 1 "GND" H 7005 1877 50  0000 C CNN
+F 2 "" H 7000 2050 50  0001 C CNN
+F 3 "" H 7000 2050 50  0001 C CNN
+	1    7000 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 2350 7150 2350
+NoConn ~ 6650 3050
+NoConn ~ 6650 3150
+NoConn ~ 6650 3250
+NoConn ~ 6650 2550
+Wire Wire Line
+	6650 2250 6750 2250
+Wire Wire Line
+	6750 2250 6750 2150
+$Comp
+L power:+12V #PWR0107
+U 1 1 5FE0E35B
+P 3950 2150
+F 0 "#PWR0107" H 3950 2000 50  0001 C CNN
+F 1 "+12V" H 3965 2323 50  0000 C CNN
+F 2 "" H 3950 2150 50  0001 C CNN
+F 3 "" H 3950 2150 50  0001 C CNN
+	1    3950 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0108
+U 1 1 5FE0F769
+P 3750 2150
+F 0 "#PWR0108" H 3750 2000 50  0001 C CNN
+F 1 "+5V" H 3765 2323 50  0000 C CNN
+F 2 "" H 3750 2150 50  0001 C CNN
+F 3 "" H 3750 2150 50  0001 C CNN
+	1    3750 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0109
+U 1 1 5FE102F6
+P 4950 3500
+F 0 "#PWR0109" H 4950 3250 50  0001 C CNN
+F 1 "GND" H 4955 3327 50  0000 C CNN
+F 2 "" H 4950 3500 50  0001 C CNN
+F 3 "" H 4950 3500 50  0001 C CNN
+	1    4950 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 3100 4950 3100
+Wire Wire Line
+	4950 3100 4950 3500
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 5FE8343E
+P 7800 2100
+F 0 "#FLG02" H 7800 2175 50  0001 C CNN
+F 1 "PWR_FLAG" H 7800 2273 50  0000 C CNN
+F 2 "" H 7800 2100 50  0001 C CNN
+F 3 "~" H 7800 2100 50  0001 C CNN
+	1    7800 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG03
+U 1 1 5FE84F59
+P 8000 1900
+F 0 "#FLG03" H 8000 1975 50  0001 C CNN
+F 1 "PWR_FLAG" H 8000 2073 50  0000 C CNN
+F 2 "" H 8000 1900 50  0001 C CNN
+F 3 "~" H 8000 1900 50  0001 C CNN
+	1    8000 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR02
+U 1 1 5FE863C9
+P 7950 2450
+F 0 "#PWR02" H 7950 2300 50  0001 C CNN
+F 1 "+5V" H 7965 2623 50  0000 C CNN
+F 2 "" H 7950 2450 50  0001 C CNN
+F 3 "" H 7950 2450 50  0001 C CNN
+	1    7950 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR01
+U 1 1 5FE86F23
+P 7650 1900
+F 0 "#PWR01" H 7650 1750 50  0001 C CNN
+F 1 "+12V" H 7665 2073 50  0000 C CNN
+F 2 "" H 7650 1900 50  0001 C CNN
+F 3 "" H 7650 1900 50  0001 C CNN
+	1    7650 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 5FE87E80
+P 8050 2450
+F 0 "#FLG01" H 8050 2525 50  0001 C CNN
+F 1 "PWR_FLAG" H 8050 2623 50  0000 C CNN
+F 2 "" H 8050 2450 50  0001 C CNN
+F 3 "~" H 8050 2450 50  0001 C CNN
+	1    8050 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J2
+U 1 1 5FE958D1
+P 3100 3000
+F 0 "J2" H 3018 3217 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 3018 3126 50  0000 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal" H 3100 3000 50  0001 C CNN
+F 3 "~" H 3100 3000 50  0001 C CNN
+	1    3100 3000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J1
+U 1 1 5FE9657D
+P 3100 2600
+F 0 "J1" H 3018 2817 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 3018 2726 50  0000 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal" H 3100 2600 50  0001 C CNN
+F 3 "~" H 3100 2600 50  0001 C CNN
+	1    3100 2600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x04 J5
+U 1 1 5FE9716C
+P 8250 2000
+F 0 "J5" H 8330 1992 50  0000 L CNN
+F 1 "Screw_Terminal_01x04" H 8330 1901 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-4-3.5-H_1x04_P3.50mm_Horizontal" H 8250 2000 50  0001 C CNN
+F 3 "~" H 8250 2000 50  0001 C CNN
+	1    8250 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 1900 8000 1900
+Wire Wire Line
+	8050 2100 7800 2100
+Wire Wire Line
+	7800 2100 7800 2150
+$Comp
+L power:GND #PWR03
+U 1 1 5FE85BEA
+P 7800 2150
+F 0 "#PWR03" H 7800 1900 50  0001 C CNN
+F 1 "GND" H 7805 1977 50  0000 C CNN
+F 2 "" H 7800 2150 50  0001 C CNN
+F 3 "" H 7800 2150 50  0001 C CNN
+	1    7800 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 2200 8050 2450
+Wire Wire Line
+	8050 2500 7950 2500
+Wire Wire Line
+	7950 2500 7950 2450
+Connection ~ 8000 1900
+Wire Wire Line
+	8000 1900 7650 1900
+Connection ~ 7800 2100
+Connection ~ 8050 2450
+Wire Wire Line
+	8050 2450 8050 2500
+Wire Wire Line
+	3300 2600 3950 2600
+Wire Wire Line
+	3950 2600 3950 2700
+Wire Wire Line
+	3950 2700 4100 2700
+Wire Wire Line
+	3300 2700 3850 2700
+Wire Wire Line
+	3850 2700 3850 2800
+Wire Wire Line
+	3850 2800 4100 2800
+Wire Wire Line
+	3300 3000 3850 3000
+Wire Wire Line
+	3850 3000 3850 2900
+Wire Wire Line
+	3850 2900 4100 2900
+Wire Wire Line
+	3300 3100 3950 3100
+Wire Wire Line
+	3950 3100 3950 3000
+Wire Wire Line
+	3950 3000 4100 3000
+Wire Wire Line
+	5750 2950 5650 2950
+Wire Wire Line
+	5650 2950 5650 2400
+Wire Wire Line
+	5650 2400 4900 2400
+Wire Wire Line
+	5750 3050 5650 3050
+Wire Wire Line
+	5650 3050 5650 3000
+Wire Wire Line
+	5650 3000 4900 3000
+Wire Wire Line
+	5750 2650 5500 2650
+Wire Wire Line
+	5500 2650 5500 2500
+Wire Wire Line
+	5500 2500 4900 2500
+Wire Wire Line
+	5750 2750 5400 2750
+Wire Wire Line
+	5400 2750 5400 2600
+Wire Wire Line
+	5400 2600 4900 2600
+Wire Wire Line
+	5750 2850 5300 2850
+Wire Wire Line
+	5300 2850 5300 2700
+Wire Wire Line
+	5300 2700 4900 2700
+Wire Wire Line
+	5750 3150 5200 3150
+Wire Wire Line
+	5200 3150 5200 2800
+Wire Wire Line
+	5200 2800 4900 2800
+Wire Wire Line
+	5750 3250 5100 3250
+Wire Wire Line
+	5100 3250 5100 2900
+Wire Wire Line
+	5100 2900 4900 2900
+Wire Wire Line
+	7150 2350 7150 2000
+Wire Wire Line
+	7150 2000 7000 2000
+Wire Wire Line
+	7000 2000 7000 2050
+Wire Wire Line
+	4100 2400 3950 2400
+Wire Wire Line
+	3950 2400 3950 2150
+Wire Wire Line
+	4100 2500 3750 2500
+Wire Wire Line
+	3750 2500 3750 2150
+NoConn ~ 4100 2600
+NoConn ~ 4100 3100
+NoConn ~ 6650 3350
+NoConn ~ 5750 3350
+NoConn ~ 8050 2000
+$Comp
+L Connector:Screw_Terminal_01x12 J3
+U 1 1 5FF404C5
+P 7850 3000
+F 0 "J3" H 7930 2992 50  0000 L CNN
+F 1 "Screw_Terminal_01x12" H 7930 2901 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-12-3.5-H_1x12_P3.50mm_Horizontal" H 7850 3000 50  0001 C CNN
+F 3 "~" H 7850 3000 50  0001 C CNN
+	1    7850 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 2500 7500 2500
+Wire Wire Line
+	7650 2700 7500 2700
+Wire Wire Line
+	7650 2800 7500 2800
+Wire Wire Line
+	7650 3000 7500 3000
+Wire Wire Line
+	7650 3100 7500 3100
+Wire Wire Line
+	7650 3300 7500 3300
+Wire Wire Line
+	7650 3400 7500 3400
+Wire Wire Line
+	7650 3600 7500 3600
+Text Label 7500 2500 0    50   ~ 0
++5V
+Text Label 7500 2800 0    50   ~ 0
++5V
+Text Label 7500 3100 0    50   ~ 0
++5V
+Text Label 7500 3400 0    50   ~ 0
++5V
+Text Label 7500 2700 0    50   ~ 0
+GND
+Text Label 7500 3000 0    50   ~ 0
+GND
+Text Label 7500 3300 0    50   ~ 0
+GND
+Text Label 7500 3600 0    50   ~ 0
+GND
+Wire Wire Line
+	7250 2950 7250 2600
+Wire Wire Line
+	7250 2600 7650 2600
+Wire Wire Line
+	6650 2950 7250 2950
+Wire Wire Line
+	7300 2650 7300 3500
+Wire Wire Line
+	7300 3500 7650 3500
+Wire Wire Line
+	6650 2650 7300 2650
+Wire Wire Line
+	7350 2750 7350 3200
+Wire Wire Line
+	7350 3200 7650 3200
+Wire Wire Line
+	6650 2750 7350 2750
+Wire Wire Line
+	7400 2850 7400 2900
+Wire Wire Line
+	7400 2900 7650 2900
+Wire Wire Line
+	6650 2850 7400 2850
+$EndSCHEMATC
